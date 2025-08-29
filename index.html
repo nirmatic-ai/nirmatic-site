@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirmatic - Arquitectura de Software e Ingeniería</title>
+  <meta name="description" content="Diseño e implementación de arquitecturas de software escalables y soluciones técnicas avanzadas.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/logo.jpg">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Nirmatic">
+  <meta property="og:description" content="Arquitectura de software e ingeniería de software.">
+  <meta property="og:image" content="assets/hero.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  <header class="header" role="banner">
+    <div class="header-container">
+      <a href="#" class="logo"><img src="assets/logo.jpg" alt="Logo Nirmatic"></a>
+      <nav class="nav" role="navigation" aria-label="Main Navigation">
+        <ul>
+          <li><a href="#services">Servicios</a></li>
+          <li><a href="#projects">Proyectos</a></li>
+          <li><a href="#team">Equipo</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Abrir menú">&#9776;</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <h1>Innovación y Arquitectura de Software</h1>
+        <p>Soluciones técnicas escalables, modernas y seguras para tu negocio.</p>
+        <a href="#contact" class="btn-primary">Contáctanos</a>
+      </div>
+      <div class="hero-image">
+        <img src="assets/hero.jpg" alt="Equipo trabajando en arquitectura de software">
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <h2>Nuestros Servicios</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Arquitectura de Software</h3>
+          <p>Diseño e implementación de sistemas escalables y de alto rendimiento.</p>
+        </div>
+        <div class="card">
+          <h3>Soluciones Técnicas</h3>
+          <p>Lideramos proyectos de infraestructura y optimización de procesos.</p>
+        </div>
+        <div class="card">
+          <h3>Mentoría y Mejores Prácticas</h3>
+          <p>Capacitamos a equipos en estándares modernos de desarrollo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+      <h2>Proyectos Destacados</h2>
+      <div class="project-grid">
+        <article class="project-card">
+          <img src="assets/project1.jpg" alt="Proyecto 1">
+          <h3>Proyecto 1</h3>
+          <p>Descripción corta del proyecto y sus beneficios.</p>
+        </article>
+        <article class="project-card">
+          <img src="assets/project2.jpg" alt="Proyecto 2">
+          <h3>Proyecto 2</h3>
+          <p>Descripción corta del proyecto y sus beneficios.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+      <h2>Conoce al Equipo</h2>
+      <div class="team-cards">
+        <div class="team-member">
+          <img src="assets/team1.jpg" alt="Miembro del equipo 1">
+          <h3>Nombre Apellido</h3>
+          <p>Rol / Especialidad</p>
+        </div>
+        <div class="team-member">
+          <img src="assets/team2.jpg" alt="Miembro del equipo 2">
+          <h3>Nombre Apellido</h3>
+          <p>Rol / Especialidad</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <h2>Contacto</h2>
+      <form id="contact-form">
+        <label for="name">Nombre</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Mensaje</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit" class="btn-primary">Enviar</button>
+      </form>
+      <div id="form-status" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Nirmatic. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
