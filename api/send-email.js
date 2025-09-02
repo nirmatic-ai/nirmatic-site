@@ -51,7 +51,7 @@ export default async function handler(req, res) {
     // Configurar el email
     const mailOptions = {
       from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USERS,
+      to: "nirmatic.ai@gmail.com",
       replyTo: email,
       subject: `Nuevo mensaje de contacto de ${name}${company ? ` (${company})` : ''}`,
       html: `
