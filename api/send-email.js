@@ -13,22 +13,25 @@ const transporter = nodemailer.createTransport({
 });
 
 // Headers para CORS
-const headers = {
+/*const headers = new Headers( {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'Content-Type',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
-};
+});*/
 
 // Función principal
 export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   // Manejar preflight para CORS
   if (req.method === 'OPTIONS') {
-    return res.status(200).setHeaders(headers).end();
+    return res.status(200).end();
   }
 
   // Solo permitir método POST
   if (req.method !== 'POST') {
-    return res.status(405).setHeaders(headers).json({ 
+    return res.status(405).json({ 
       success: false, 
       error: 'Método no permitido' 
     });
@@ -76,14 +79,14 @@ export default async function handler(req, res) {
     await transporter.sendMail(mailOptions);
 
     // Respuesta exitosa
-    res.status(200).setHeaders(headers).json({
+    res.status(200).json({
       success: true,
       message: 'Mensaje enviado correctamente'
     });
 
   } catch (error) {
     console.error('Error enviando email:', error);
-    res.status(500).setHeaders(headers).json({
+    res.status(500).json({
       success: false,
       error: 'Error interno del servidor al enviar el mensaje'
     });
