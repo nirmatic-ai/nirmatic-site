@@ -2,7 +2,7 @@
 const nodemailer = require('nodemailer');
 
 // Configuración del transporter de Gmail
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 587,
   secure: false,
