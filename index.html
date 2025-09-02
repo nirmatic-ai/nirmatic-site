@@ -852,61 +852,58 @@
             const form = document.getElementById('contact-form');
             const submitButton = document.getElementById('submit-button');
             const messageDiv = document.getElementById('form-message');
-            const formData = new FormData(form);
             
             // Show loading state
             submitButton.disabled = true;
             submitButton.innerHTML = 'Enviando...';
             messageDiv.classList.add('hidden');
             
-            // Simulate form submission (replace with actual email service)
-            setTimeout(() => {
-                // Show success message
+            // Prepare form data
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                company: formData.get('company'),
+                message: formData.get('message')
+            };
+            
+            // Send to Vercel serverless function
+            fetch('/api/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    // Show success message
+                    messageDiv.classList.remove('hidden');
+                    messageDiv.classList.add('bg-green-100', 'text-green-700', 'dark:bg-green-900', 'dark:text-green-300');
+                    messageDiv.innerHTML = '¡Mensaje enviado con éxito! Te contactaremos pronto.';
+                    
+                    // Reset form
+                    form.reset();
+                } else {
+                    throw new Error(result.error || 'Error al enviar el mensaje');
+                }
+            })
+            .catch(error => {
+                // Show error message
                 messageDiv.classList.remove('hidden');
-                messageDiv.classList.add('bg-green-100', 'text-green-700', 'dark:bg-green-900', 'dark:text-green-300');
-                messageDiv.innerHTML = '¡Mensaje enviado con éxito! Te contactaremos pronto.';
-                
-                // Reset form
-                form.reset();
-                
+                messageDiv.classList.add('bg-red-100', 'text-red-700', 'dark:bg-red-900', 'dark:text-red-300');
+                messageDiv.innerHTML = 'Error al enviar el mensaje. Por favor, intenta nuevamente.';
+                console.error('Error:', error);
+            })
+            .finally(() => {
                 // Reset button
                 submitButton.disabled = false;
                 submitButton.innerHTML = 'Enviar Mensaje';
-                
-                // For production, you would integrate with:
-                // 1. EmailJS (https://www.emailjs.com/)
-                // 2. Formspree (https://formspree.io/)
-                // 3. Or your own backend API
-                
-                // Example using EmailJS (uncomment and configure):
-                /*
-                emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
-                    .then(() => {
-                        messageDiv.classList.remove('hidden');
-                        messageDiv.classList.add('bg-green-100', 'text-green-700');
-                        messageDiv.innerHTML = '¡Mensaje enviado con éxito!';
-                        form.reset();
-                    }, (error) => {
-                        messageDiv.classList.remove('hidden');
-                        messageDiv.classList.add('bg-red-100', 'text-red-700');
-                        messageDiv.innerHTML = 'Error al enviar el mensaje. Intenta nuevamente.';
-                    })
-                    .finally(() => {
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = 'Enviar Mensaje';
-                    });
-                */
-            }, 1500);
+            });
             
             return false;
         }
-        
-        // Add EmailJS script (uncomment for production)
-        /*
-        (function() {
-            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
-        })();
-        */
     </script>
 </body>
 </html>
