@@ -1,6 +1,4 @@
 // File: /api/send-email.js
-import { inject } from "@vercel/analytics"
-inject();
 const nodemailer = require('nodemailer');
 
 // Configuración del transporter de Gmail
