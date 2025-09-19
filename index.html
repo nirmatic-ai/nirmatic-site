@@ -104,7 +104,7 @@
         "sameAs": [
           "https://linkedin.com/company/nirmatic",
           "https://twitter.com/nirmatic",
-          "https://github.com/nirmatic"
+          "https://github.com/nirmatic-ai"
         ],
         "foundingDate": "2004",
         "numberOfEmployees": "10-50",
@@ -167,15 +167,36 @@
                 animation: {
                   "fade-in": "fadeIn 0.5s ease-out",
                   "slide-up": "slideUp 0.5s ease-out",
+                  float: "float 6s ease-in-out infinite",
+                  "pulse-slow":
+                    "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
                 },
                 keyframes: {
                   fadeIn: {
-                    "0%": { opacity: "0" },
-                    "100%": { opacity: "1" },
+                    "0%": {
+                      opacity: "0",
+                    },
+                    "100%": {
+                      opacity: "1",
+                    },
                   },
                   slideUp: {
-                    "0%": { transform: "translateY(10px)", opacity: "0" },
-                    "100%": { transform: "translateY(0)", opacity: "1" },
+                    "0%": {
+                      transform: "translateY(10px)",
+                      opacity: "0",
+                    },
+                    "100%": {
+                      transform: "translateY(0)",
+                      opacity: "1",
+                    },
+                  },
+                  float: {
+                    "0%, 100%": {
+                      transform: "translateY(0)",
+                    },
+                    "50%": {
+                      transform: "translateY(-10px)",
+                    },
                   },
                 },
               },
@@ -673,12 +694,15 @@
 
     <main id="main-content" class="pt-16 md:pt-20">
       <!-- Hero Section -->
-      <section class="relative min-h-screen flex items-center overflow-hidden">
+      <section
+        class="relative min-h-[90vh] flex items-center overflow-hidden parallax-container"
+      >
+        <div class="absolute inset-0 pattern-dots"></div>
         <div
           class="absolute inset-0 bg-gradient-to-br from-nirmatic-primary/10 to-nirmatic-secondary/10"
         ></div>
         <div
-          class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0wIDBoMjB2MjBIMHoiIHN0cm9rZT0iI2Q0ZDRkOCIgc3Ryb2tlLW9wYWNpdHk9Ii4xIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjAuNSIvPjwvc3ZnPg==')] opacity-10"
+          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0)_70%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.1)_0%,rgba(0,0,0,0)_70%)]"
         ></div>
 
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
